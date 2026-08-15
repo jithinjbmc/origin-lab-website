@@ -14,9 +14,13 @@ collections:
     label: "Publications"
     folder: "content/publications"
     create: true
-    slug: "{{year}}-{{slug}}"
+    slug: "{{year}}-{{fields.slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - label: "Short ID (a few words, no spaces — used as the filename only, not shown on the site)"
+        name: "slug"
+        widget: "string"
+        pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers, and hyphens only, e.g. mundochthonius-tsushima"]
       - { label: "Authors", name: "authors", widget: "string" }
       - { label: "Year", name: "year", widget: "number", value_type: "int" }
       - { label: "Journal", name: "journal", widget: "string" }
@@ -34,9 +38,13 @@ collections:
     label: "News & Media"
     folder: "content/news"
     create: true
-    slug: "{{year}}-{{month}}-{{slug}}"
+    slug: "{{year}}-{{month}}-{{fields.slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - label: "Short ID (a few words, no spaces — used as the filename only)"
+        name: "slug"
+        widget: "string"
+        pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers, and hyphens only"]
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Publisher", name: "publisher", widget: "string" }
       - label: "Category"
@@ -69,9 +77,13 @@ collections:
     label: "Projects"
     folder: "content/projects"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - label: "Short ID (a few words, no spaces — used as the filename only)"
+        name: "slug"
+        widget: "string"
+        pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers, and hyphens only"]
       - { label: "Scientific question", name: "question", widget: "text" }
       - { label: "Organisms", name: "organisms", widget: "string", required: false }
       - { label: "Geographic scope", name: "scope", widget: "string", required: false }
@@ -93,9 +105,13 @@ collections:
     label: "People"
     folder: "content/people"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     fields:
       - { label: "Name", name: "name", widget: "string" }
+      - label: "Short ID (a few words, no spaces — used as the filename only)"
+        name: "slug"
+        widget: "string"
+        pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers, and hyphens only"]
       - label: "Role"
         name: "role"
         widget: "select"
@@ -125,9 +141,13 @@ collections:
     label: "Opportunities"
     folder: "content/opportunities"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - label: "Short ID (a few words, no spaces — used as the filename only)"
+        name: "slug"
+        widget: "string"
+        pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers, and hyphens only"]
       - label: "Status"
         name: "status"
         widget: "select"
