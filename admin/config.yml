@@ -1,0 +1,147 @@
+backend:
+  name: github
+  repo: jithinjbmc/origin-lab-website
+  branch: main
+  base_url: https://origin-lab-backend.onrender.com
+  auth_endpoint: auth
+
+publish_mode: editorial_workflow
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "publications"
+    label: "Publications"
+    folder: "content/publications"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Authors", name: "authors", widget: "string" }
+      - { label: "Year", name: "year", widget: "number", value_type: "int" }
+      - { label: "Journal", name: "journal", widget: "string" }
+      - { label: "Volume", name: "volume", widget: "string", required: false }
+      - { label: "Pages / Article no.", name: "pages", widget: "string", required: false }
+      - { label: "DOI", name: "doi", widget: "string", required: false }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["Published", "In press", "Accepted", "Submitted"]
+      - { label: "Research theme", name: "theme", widget: "string", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+
+  - name: "news"
+    label: "News & Media"
+    folder: "content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Publisher", name: "publisher", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          [
+            "Research in the Media",
+            "Independent News Coverage",
+            "Institutional News",
+            "Interview",
+            "Video",
+            "Public Lecture",
+            "Conference/Event",
+            "Award",
+            "Outreach",
+            "Press Release",
+          ]
+      - label: "Source type"
+        name: "sourceType"
+        widget: "select"
+        options: ["Independent", "Institutional"]
+      - { label: "Language", name: "language", widget: "string", default: "English" }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Source URL", name: "url", widget: "string" }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Scientific question", name: "question", widget: "text" }
+      - { label: "Organisms", name: "organisms", widget: "string", required: false }
+      - { label: "Geographic scope", name: "scope", widget: "string", required: false }
+      - { label: "Methods", name: "methods", widget: "text", required: false }
+      - { label: "Collaborators", name: "collaborators", widget: "string", required: false }
+      - label: "Funding status"
+        name: "fundingStatus"
+        widget: "select"
+        options: ["Funded", "Proposed", "Unfunded", "Not applicable"]
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["Ongoing", "Completed", "Planned", "Proposed"]
+      - { label: "Timeline", name: "timeline", widget: "string", required: false }
+      - { label: "Outputs", name: "outputs", widget: "text", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "people"
+    label: "People"
+    folder: "content/people"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - label: "Role"
+        name: "role"
+        widget: "select"
+        options:
+          [
+            "Principal Investigator",
+            "Student",
+            "Project Staff",
+            "Research Associate",
+            "Collaborator",
+            "Institutional Partner",
+          ]
+      - { label: "Institution", name: "institution", widget: "string", required: false }
+      - { label: "Country", name: "country", widget: "string", required: false }
+      - { label: "Research expertise", name: "expertise", widget: "string", required: false }
+      - { label: "Personal website", name: "personalUrl", widget: "string", required: false }
+      - { label: "ORCID", name: "orcid", widget: "string", required: false }
+      - { label: "Google Scholar", name: "scholarUrl", widget: "string", required: false }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - label: "Display status"
+        name: "displayStatus"
+        widget: "select"
+        options: ["Visible", "Hidden"]
+        default: "Visible"
+
+  - name: "opportunities"
+    label: "Opportunities"
+    folder: "content/opportunities"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["Open", "Closed", "No current vacancy"]
+      - { label: "Description", name: "body", widget: "markdown" }
+      - { label: "Deadline", name: "deadline", widget: "datetime", required: false }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Contact Details"
+        name: "contact"
+        file: "content/contact.json"
+        fields:
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Department", name: "department", widget: "string" }
+          - { label: "Address line", name: "address", widget: "string" }
