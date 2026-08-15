@@ -1,0 +1,357 @@
+{
+  "site": {
+    "visual_name": "ORiGIN Lab",
+    "canonical_name": "ORIGIN Lab",
+    "full_name": "Organismal Research in Genomics, Integrative Systematics and Natural History",
+    "tagline": "Tracing biodiversity from landscape to lineage.",
+    "description": "ORiGIN Lab investigates how species arise, diversify and persist using field biology, morphology, molecular data, museum collections and evolutionary analysis.",
+    "institution": "Department of Zoology, Bharata Mata College (Autonomous)",
+    "location": "Thrikkakara, Kochi, Kerala 682021, India",
+    "email": "jithin.j@bharatamatacollege.in",
+    "site_url": "",
+    "copyright": "© 2026 ORiGIN Lab. All rights reserved.",
+    "image_credit": "Western Ghats shola forest photograph by SeethaG / Wikimedia Commons, CC BY-SA 4.0",
+    "logo_status": "Provisional editable mark — replace only after final logo approval."
+  },
+  "principal_investigator": {
+    "name": "Dr. Jithin Johnson, FLS",
+    "title": "Assistant Professor",
+    "affiliation": "Department of Zoology, Bharata Mata College (Autonomous)",
+    "location": "Thrikkakara, Kochi, Kerala, India",
+    "bio": "Jithin is an evolutionary biologist and arachnologist working on pseudoscorpion systematics, Western Ghats biogeography, phylogenomics, integrative taxonomy, fossil arachnids and invertebrate conservation.",
+    "roles": [
+      "Visiting Scientist, Museum of Nature Hamburg (LIB)",
+      "Subject Editor, Zootaxa (Pseudoscorpiones)",
+      "Fellow of the Linnean Society of London"
+    ],
+    "research_focus": [
+      "Pseudoscorpion systematics",
+      "Historical biogeography",
+      "Phylogenomics",
+      "Integrative taxonomy",
+      "Fossil arachnids",
+      "Invertebrate conservation"
+    ],
+    "profiles": [
+      {
+        "label": "ORCID",
+        "url": "https://orcid.org/0000-0003-1511-5110"
+      },
+      {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.com/citations?hl=en&user=SCG7xhgAAAAJ"
+      },
+      {
+        "label": "ResearchGate",
+        "url": "https://www.researchgate.net/profile/Jithin-Johnson"
+      },
+      {
+        "label": "GBIF",
+        "url": "https://www.gbif.org/publisher/f0513163-c31d-49c5-8584-5e6aa5e5e713"
+      }
+    ]
+  },
+  "research_themes": [
+    {
+      "slug": "systematics",
+      "title": "Systematics & Species Discovery",
+      "kicker": "Recognising overlooked diversity",
+      "description": "Comparative morphology, diagnostic characters, taxonomic revision and integrative species delimitation.",
+      "methods": [
+        "Morphological taxonomy",
+        "Microscopy",
+        "DNA barcoding",
+        "Species delimitation",
+        "Identification keys"
+      ]
+    },
+    {
+      "slug": "phylogenomics",
+      "title": "Phylogenetics & Phylogenomics",
+      "kicker": "Reconstructing evolutionary history",
+      "description": "Evolutionary relationships inferred using multilocus and genome-scale data, with explicit attention to uncertainty and concordance.",
+      "methods": [
+        "Multilocus phylogenetics",
+        "Ultraconserved elements",
+        "Divergence-time analysis",
+        "Concordance assessment",
+        "Comparative genomics"
+      ]
+    },
+    {
+      "slug": "biogeography",
+      "title": "Historical Biogeography",
+      "kicker": "Connecting lineages and landscapes",
+      "description": "Testing how vicariance, dispersal, climate and geological history shaped present-day organismal distributions.",
+      "methods": [
+        "Ancestral-area reconstruction",
+        "Landscape interpretation",
+        "Comparative biogeography",
+        "Western Ghats regional analysis"
+      ]
+    },
+    {
+      "slug": "collections",
+      "title": "Collections, Fossils & Imaging",
+      "kicker": "Evidence from specimens and deep time",
+      "description": "Connecting modern biodiversity with museum specimens, fossil inclusions, microscopy and non-destructive imaging.",
+      "methods": [
+        "Natural-history collections",
+        "Amber fossils",
+        "Micro-CT",
+        "Digital imaging",
+        "Comparative morphology"
+      ]
+    }
+  ],
+  "research_questions": [
+    "How does geography structure evolutionary diversity?",
+    "How can overlooked species be recognised?",
+    "What can low-dispersal arthropods reveal about deep time?",
+    "How can genomic, morphological and geographic evidence be integrated?",
+    "How can taxonomy contribute to biodiversity conservation?"
+  ],
+  "workflow": [
+    {
+      "step": "01",
+      "title": "Field sampling",
+      "text": "Habitat, locality and specimen documentation."
+    },
+    {
+      "step": "02",
+      "title": "Morphology & imaging",
+      "text": "Microscopy, diagnostic structures and comparative characters."
+    },
+    {
+      "step": "03",
+      "title": "Molecular data",
+      "text": "DNA barcodes, multilocus datasets and genomic evidence."
+    },
+    {
+      "step": "04",
+      "title": "Evolutionary analysis",
+      "text": "Phylogeny, dating, concordance and biogeographic inference."
+    },
+    {
+      "step": "05",
+      "title": "Open outputs",
+      "text": "Publications, datasets, collections and conservation evidence."
+    }
+  ],
+  "projects": [
+    {
+      "title": "Integrative Revision of Western Ghats Tyrannochthoniini",
+      "status": "In press / ongoing synthesis",
+      "category": "Systematics",
+      "summary": "An integrative taxonomic and biogeographic revision combining morphology, molecular evidence and evolutionary analyses to resolve poorly known Western Ghats pseudoscorpion diversity.",
+      "organisms": "Pseudoscorpiones: Tyrannochthoniini",
+      "geography": "Western Ghats, India",
+      "methods": [
+        "Morphometrics",
+        "Multilocus phylogenetics",
+        "Species delimitation",
+        "Historical biogeography"
+      ]
+    },
+    {
+      "title": "Multi-lineage UCE Phylogenomics in the Western Ghats",
+      "status": "Proposed research programme",
+      "category": "Genomics",
+      "summary": "A comparative framework designed to test whether different low-dispersal pseudoscorpion lineages preserve concordant geographic and evolutionary signals.",
+      "organisms": "Tyrannochthoniini, litter Atemnidae and Geogarypidae",
+      "geography": "Western Ghats, India",
+      "methods": [
+        "Ultraconserved elements",
+        "Species-tree inference",
+        "Divergence dating",
+        "Biogeographic modelling"
+      ]
+    },
+    {
+      "title": "Comparative Tyrannochthonius Systematics",
+      "status": "Planned international collaboration",
+      "category": "Biogeography",
+      "summary": "Comparative study of North American and East Asian lineages using museum collections, morphology, molecular evidence and phylogenomic approaches.",
+      "organisms": "Tyrannochthonius and allied pseudoscorpions",
+      "geography": "North America and East Asia",
+      "methods": [
+        "Museum collections",
+        "Integrative taxonomy",
+        "UCE phylogenomics",
+        "Comparative biogeography"
+      ]
+    },
+    {
+      "title": "Western Ghats Tarantula Conservation",
+      "status": "Conservation research programme",
+      "category": "Conservation",
+      "summary": "Field-based research supporting distributional baselines, habitat documentation and conservation assessment for threatened and poorly known Western Ghats tarantulas.",
+      "organisms": "Theraphosidae",
+      "geography": "Southern Western Ghats, India",
+      "methods": [
+        "Burrow surveys",
+        "Habitat documentation",
+        "Camera trapping",
+        "Conservation assessment"
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "year": 2026,
+      "title": "A new species of Mundochthonius Chamberlin, 1929 from Tsushima Island, Japan with notes on cryptic diversity and biogeography of the Japanese Archipelago",
+      "authors": "Jeong K-H, Oh J, Shida R, Johnson J, Harms D & Kim S",
+      "journal": "Evolutionary Systematics 10(2): 263–274",
+      "doi": "10.3897/evolsyst.10.199765",
+      "url": "https://doi.org/10.3897/evolsyst.10.199765",
+      "theme": "Systematics",
+      "featured": true
+    },
+    {
+      "year": 2024,
+      "title": "A new species of Ditha from the Western Ghats of India, with an identification key for the genus",
+      "authors": "Jeong K-H, Harms D & Johnson J",
+      "journal": "Zoosystematics and Evolution 100(1): 1–8",
+      "doi": "10.3897/zse.100.110020",
+      "url": "https://doi.org/10.3897/zse.100.110020",
+      "theme": "Systematics",
+      "featured": true
+    },
+    {
+      "year": 2023,
+      "title": "First record of the pseudoscorpion tribe Tyrannochthoniini from mid-Cretaceous Burmese amber of northern Myanmar",
+      "authors": "Johnson J, Loria SF, Kotthoff U, Hammel JU, Joseph MM & Harms D",
+      "journal": "Cretaceous Research 144: 105459",
+      "doi": "10.1016/j.cretres.2022.105459",
+      "url": "https://doi.org/10.1016/j.cretres.2022.105459",
+      "theme": "Fossils",
+      "featured": true
+    },
+    {
+      "year": 2022,
+      "title": "Biogeographical and diversification analyses of Indian pseudoscorpions reveal the Western Ghats as museums of ancient biodiversity",
+      "authors": "Johnson J, Loria SF, Joseph MM & Harms D",
+      "journal": "Molecular Phylogenetics and Evolution 175: 107495",
+      "doi": "10.1016/j.ympev.2022.107495",
+      "url": "https://doi.org/10.1016/j.ympev.2022.107495",
+      "theme": "Biogeography",
+      "featured": true
+    },
+    {
+      "year": 2019,
+      "title": "A review of the pseudoscorpion genus Metawithius from the Indian subcontinent",
+      "authors": "Johnson J, Romero-Ortiz C, Mathew AV, Sebastian PA, Joseph MM & Harvey MS",
+      "journal": "Journal of Arachnology 47(1): 84–94",
+      "doi": "",
+      "url": "https://research-repository.uwa.edu.au/en/publications/a-review-of-the-pseudoscorpion-genus-metawithius-pseudoscorpiones",
+      "theme": "Systematics",
+      "featured": false
+    }
+  ],
+  "collaborators": [
+    {
+      "name": "Dr. Danilo Harms",
+      "role": "Head, Arachnida & Myriapoda, Museum of Nature Hamburg (LIB)",
+      "focus": "Arachnid systematics, phylogenomics, museum collections, fossil lineages and UCE development",
+      "country": "Germany",
+      "url": "https://leibniz-lib.de/en/research/research-centres/ztm/hamburg-location/arachnida-myriapoda-hamburg.html"
+    },
+    {
+      "name": "Dr. Stephanie F. Loria",
+      "role": "Assistant Professor, University of Central Oklahoma",
+      "focus": "Arachnid systematics, Indo-Pacific biogeography, comparative sampling and phylogenomic strategy",
+      "country": "United States",
+      "url": "https://www3.uco.edu/centraldirectory/profiles/1104105"
+    },
+    {
+      "name": "Dr. Mark S. Harvey",
+      "role": "Research Associate, Western Australian Museum",
+      "focus": "Global pseudoscorpion taxonomy, comparative morphology, nomenclature and Australasian biodiversity",
+      "country": "Australia",
+      "url": "https://visit.museum.wa.gov.au/learn/news-stories/1000-species-and-counting-dr-mark-harveys-impact-australias-hidden-wildlife"
+    },
+    {
+      "name": "Dr. Mathew M. Joseph",
+      "role": "Senior Scientist, Centre for Arachnology, Bharata Mata College",
+      "focus": "Western Ghats arachnid diversity, institutional research development and long-term field expertise",
+      "country": "India",
+      "url": "https://www.bharatamatacollege.in/research/departments/school-of-sciences"
+    },
+    {
+      "name": "Prof. Sora Kim",
+      "role": "Associate Professor, Jeonbuk National University",
+      "focus": "Insect and arachnid systematics, molecular identification, micro-CT and East Asian collaboration",
+      "country": "Republic of Korea",
+      "url": "https://pure.jbnu.ac.kr/en/persons/sora-kim/"
+    },
+    {
+      "name": "Kyung-Hoon Jeong",
+      "role": "Graduate Researcher, Jeonbuk National University",
+      "focus": "Integrative pseudoscorpion taxonomy, Korean cave lineages, genome workflows and micro-CT imaging",
+      "country": "Republic of Korea",
+      "url": "https://scholar.google.com/citations?hl=ko&user=y1ws0-0AAAAJ"
+    }
+  ],
+  "news": [
+    {
+      "date": "2026-02-18",
+      "display_date": "18 February 2026",
+      "category": "Institutional News",
+      "title": "Elected Fellow of the Linnean Society of London",
+      "publisher": "Bharata Mata College",
+      "summary": "The college announced Dr. Jithin Johnson’s election as a Fellow of the Linnean Society of London.",
+      "url": "https://www.bharatamatacollege.in/our-happenings-detail/we-are-immensely-proud-to-announce-that-dr-jithin-johnson-assistant-professor-in-the-department-of-zoology-at-bharata-mata-college-has-been-elected-as-a-fellow-of-the-linnean-society-fls-of-london",
+      "featured": true
+    },
+    {
+      "date": "2026-01-30",
+      "display_date": "30 January 2026",
+      "category": "Institutional News",
+      "title": "Grant support for an international workshop on soil arachnids",
+      "publisher": "Bharata Mata College",
+      "summary": "Institutional announcement of grant support for an international workshop on evolutionary systematics of soil arachnids.",
+      "url": "https://www.bharatamatacollege.in/our-happenings-detail/congratulations-dr-jithin-johnson-for-winning-a-grant-of-2000-us-dollars",
+      "featured": true
+    },
+    {
+      "date": "2026-01-01",
+      "display_date": "2026",
+      "category": "Conference",
+      "title": "Arachnid Systematics of the Oriental and Indo-Pacific Regions",
+      "publisher": "23rd International Congress of Arachnology",
+      "summary": "A symposium on integrative taxonomy, molecular systematics, phylogenomics and conservation coordinated by Dr. Jithin Johnson and Dr. Stephanie F. Loria.",
+      "url": "https://www.ica2026.in/symposia.asp",
+      "featured": true
+    },
+    {
+      "date": "2025-09-10",
+      "display_date": "10 September 2025",
+      "category": "Outreach",
+      "title": "Research methodology workshop for undergraduate students",
+      "publisher": "Tropical Institute of Ecological Sciences",
+      "summary": "A multi-college training programme coordinated by the Department of Zoology to strengthen undergraduate research skills.",
+      "url": "https://www.ties.org.in/News/ResearchMethodologyWorkshopatBharataMataCollege-Autonomous--Thrikkakara-Ernakulam",
+      "featured": false
+    },
+    {
+      "date": "2025-03-16",
+      "display_date": "16 March 2025",
+      "category": "International Workshop",
+      "title": "Evolutionary Biology of Arachnids in the Western Ghats of India",
+      "publisher": "Asian Society of Arachnology",
+      "summary": "Programme information for a hands-on workshop covering arachnid sampling, biogeography, molecular methods and evolutionary analysis.",
+      "url": "https://www.asianarachnology.com/international-workshop-evolutionary-biology-of-arachnids-in-the-western-ghats-of-india/",
+      "featured": false
+    },
+    {
+      "date": "2022-08-24",
+      "display_date": "24 August 2022",
+      "category": "Independent Media",
+      "title": "The harmless ‘scorpions’",
+      "publisher": "The New Indian Express",
+      "summary": "A report on Western Ghats pseudoscorpions and their value for understanding ancient biodiversity.",
+      "url": "https://www.newindianexpress.com/cities/kochi/2022/Aug/24/the-harmless-scorpions-2490685.html",
+      "featured": true
+    }
+  ]
+}
