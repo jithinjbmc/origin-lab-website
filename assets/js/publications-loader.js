@@ -138,7 +138,7 @@
           ? `<a class="external" href="https://doi.org/${escapeHtml(p.doi)}" target="_blank" rel="noopener noreferrer">View source ↗</a>`
           : "";
         const volPages = [p.volume, p.pages].filter(Boolean).join(": ");
-        return `<article class="publication reveal">
+        return `<article class="publication">
           <div class="pub-year">${escapeHtml(p.year || "")}</div>
           <div>
             <h3>${renderItalics(p.title)}</h3>
