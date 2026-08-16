@@ -3,7 +3,10 @@
   const REPO_NAME = "origin-lab-website";
   const BRANCH = "main";
   const CONTENT_PATH = "content/publications";
-  const listUrl = `https://data.jsdelivr.com/v1/packages/gh/${REPO_OWNER}/${REPO_NAME}@${BRANCH}`;
+  // GitHub's own raw CDN refreshes within minutes of a push, unlike
+  // jsDelivr's branch-alias cache which can lag for hours.
+  const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CONTENT_PATH}?ref=${BRANCH}`;
+  const rawBase = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${CONTENT_PATH}`;
 
   const container = document.getElementById("publications-list");
   const filterBar = document.getElementById("publications-filters");
@@ -54,23 +57,12 @@
   }
 
   async function findPublicationFiles() {
-    const res = await fetch(listUrl);
+    const res = await fetch(apiUrl, { cache: "no-store" });
     if (!res.ok) throw new Error("Could not list repository files");
     const data = await res.json();
-
-    function walk(entries, currentPath) {
-      let found = [];
-      for (const entry of entries) {
-        const path = currentPath ? `${currentPath}/${entry.name}` : entry.name;
-        if (entry.type === "directory" && entry.files) {
-          found = found.concat(walk(entry.files, path));
-        } else if (entry.type === "file" && path.startsWith(CONTENT_PATH + "/") && path.endsWith(".md")) {
-          found.push(path);
-        }
-      }
-      return found;
-    }
-    return walk(data.files, "");
+    return data
+      .filter((entry) => entry.type === "file" && entry.name.endsWith(".md"))
+      .map((entry) => entry.name);
   }
 
   async function fetchAndRender() {
@@ -82,9 +74,8 @@
       }
 
       const entries = await Promise.all(
-        files.map(async (path) => {
-          const url = `https://cdn.jsdelivr.net/gh/${REPO_OWNER}/${REPO_NAME}@${BRANCH}/${path}`;
-          const res = await fetch(url);
+        files.map(async (name) => {
+          const res = await fetch(`${rawBase}/${name}`, { cache: "no-store" });
           const raw = await res.text();
           return parseFrontmatter(raw);
         })
