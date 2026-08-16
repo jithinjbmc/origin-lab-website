@@ -34,9 +34,16 @@
 
   // Convert _text_ to <em>text</em> for scientific names, without
   // touching underscores that are part of a word (e.g. file_name).
+  // Inline style guarantees visible italics regardless of how the
+  // page's heading font falls back (the site's 'Lora' heading font
+  // isn't actually loaded, so relying on em's default styling alone
+  // isn't reliable here).
   function renderItalics(str) {
     if (!str) return "";
-    return str.replace(/(^|\s)_([^_]+)_(?=\s|$|,|\.|\()/g, "$1<em>$2</em>");
+    return str.replace(
+      /(^|\s)_([^_]+)_(?=\s|$|,|\.|\()/g,
+      '$1<em style="font-style:italic;font-weight:inherit">$2</em>'
+    );
   }
 
   function escapeHtml(str) {
