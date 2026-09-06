@@ -1,64 +1,38 @@
-/* ORiGIN Lab - Full Accessibility Widget CSS */
-:root { --access-font-scale: 1; }
-html { font-size: calc(100% * var(--access-font-scale)); }
-right:0; bottom:62px;.origin-access-widget { position:fixed; right:22px; bottom:22px; z-index:9999; font-family:inherit; }
-right:0; bottom:70px; max-height:calc(100vh - 110px); overflow-y:auto;.origin-access-toggle { width:54px; height:54px; border:0; border-radius:50%; background:#173f35; color:#fff; cursor:pointer; box-shadow:0 4px 20px rgba(0,0,0,.28); display:flex; align-items:center; justify-content:center; transition:background .2s,transform .15s; }
-.origin-access-toggle:hover,.origin-access-toggle:focus-visible { background:#b68a36; transform:scale(1.06); outline:3px solid #b68a36; outline-offset:3px; }
-.origin-access-icon { font-size:1.1rem; font-weight:700; letter-spacing:.02em; line-height:1; user-select:none; }
-
-.origin-access-panel { position:absolute; right:0; bottom:62px; width:300px; padding:16px; background:#fff; border:1px solid #d4cfc8; border-radius:14px; box-shadow:0 16px 40px rgba(0,0,0,.18); font-size:.9rem; max-height:80vh; overflow-y:auto; }
-
-.origin-access-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid #e8e4de; color:#173f35; font-weight:600; font-size:.95rem; }
-.origin-access-close { background:none!important; border:none!important; padding:0 4px!important; margin:0!important; width:auto!important; min-height:unset!important; color:#173f35!important; font-size:22px!important; line-height:1; cursor:pointer; }
-.origin-access-close:hover { color:#b68a36!important; }
-
-.origin-access-group-label { display:block; font-size:.67rem; letter-spacing:.1em; text-transform:uppercase; color:#7a6f65; margin:12px 0 5px; font-weight:600; }
-
-.origin-access-btn-row { display:flex; gap:6px; align-items:center; margin:3px 0; }
-.origin-access-btn-row button { flex:1; }
-.origin-font-scale-val { font-size:.8rem; color:#173f35; font-weight:600; min-width:38px; text-align:center; }
-
-.origin-access-panel button:not(.origin-access-close):not(.origin-access-toggle) { width:100%; min-height:40px; margin:3px 0; border:1.5px solid #d4cfc8; border-radius:8px; background:#f0ede8; color:#173f35; cursor:pointer; font-size:.85rem; font-weight:500; font-family:inherit; transition:background .15s,border-color .15s,color .15s; }
-.origin-access-panel button:not(.origin-access-close):not(.origin-access-toggle):hover, .origin-access-panel button:not(.origin-access-close):not(.origin-access-toggle):focus-visible { background:#173f35; color:#fff; border-color:#173f35; outline:2px solid #b68a36; outline-offset:2px; }
-.origin-access-panel button.is-active { background:#173f35!important; color:#fff!important; border-color:#173f35!important; }
-
-.origin-access-panel select { width:100%; min-height:40px; margin:3px 0; border:1.5px solid #d4cfc8; border-radius:8px; background:#f0ede8; color:#173f35; font-size:.85rem; font-family:inherit; padding:0 10px; cursor:pointer; }
-.origin-access-panel select:focus-visible { outline:2px solid #b68a36; outline-offset:2px; border-color:#173f35; }
-
-.origin-access-note { display:block; margin-top:12px; padding-top:10px; border-top:1px solid #e8e4de; font-size:.7rem; color:#7a6f65; line-height:1.5; }
-
-/* HIGH CONTRAST */
-html.origin-high-contrast body { background:#000!important; color:#fff!important; }
-html.origin-high-contrast :is(header,.site-header,nav,main,section,article,footer,.card,.fact-panel,.publication,.bento,.workflow article) { background:#000!important; color:#fff!important; border-color:#555!important; }
-html.origin-high-contrast a { color:#ffff00!important; text-decoration:underline!important; }
-html.origin-high-contrast .button,.origin-high-contrast .nav-cta { background:#fff!important; color:#000!important; border:2px solid #ffff00!important; }
-html.origin-high-contrast .hero-bg { filter:contrast(1.4) brightness(0.5); }
-html.origin-high-contrast .card-icon,.origin-high-contrast .number { background:#333!important; color:#ffff00!important; }
-
-/* DYSLEXIA */
-html.origin-dyslexia, html.origin-dyslexia * { font-family:'OpenDyslexic',Comic Sans MS,Arial,sans-serif!important; letter-spacing:.05em!important; word-spacing:.15em!important; line-height:1.8!important; }
-
-/* REDUCE MOTION */
-html.origin-reduce-motion *, html.origin-reduce-motion *::before, html.origin-reduce-motion *::after { animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; scroll-behavior:auto!important; }
-
-/* BIG CURSOR */
-html.origin-big-cursor, html.origin-big-cursor * { cursor:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="8" cy="8" r="7" fill="%23173f35" stroke="white" stroke-width="2"/></svg>') 8 8,auto!important; }
-
-/* HIGHLIGHT LINKS */
-html.origin-highlight-links a { background:#ffff00!important; color:#000!important; padding:1px 3px!important; border-radius:2px!important; text-decoration:underline!important; }
-
-/* COLOUR BLINDNESS PROFILES */
-html.origin-profile-protanopia    { filter:url(#origin-protanopia); }
-html.origin-profile-deuteranopia  { filter:url(#origin-deuteranopia); }
-html.origin-profile-tritanopia    { filter:url(#origin-tritanopia); }
-html.origin-profile-protanomaly   { filter:url(#origin-protanomaly); }
-html.origin-profile-deuteranomaly { filter:url(#origin-deuteranomaly); }
-html.origin-profile-tritanomaly   { filter:url(#origin-tritanomaly); }
-html.origin-profile-achromatopsia { filter:url(#origin-achromatopsia); }
-html.origin-profile-achromatomaly { filter:url(#origin-achromatomaly); }
-
-/* MOBILE */
-@media(max-width:600px) {
-     .origin-access-widget { right:14px; bottom:80px; }
-     .origin-access-panel { width:min(300px,calc(100vw - 28px)); right:0; }
-}
+/* ORiGIN Lab - Accessibility Widget */
+:root{--access-font-scale:1}
+html{font-size:calc(100% * var(--access-font-scale))}
+.origin-access-widget{position:fixed;right:22px;bottom:22px;z-index:9999;font-family:inherit}
+.origin-access-toggle{width:54px;height:54px;border:0;border-radius:50%;background:#173f35;color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s}
+.origin-access-toggle:hover,.origin-access-toggle:focus-visible{background:#b68a36;transform:scale(1.06);outline:3px solid #b68a36;outline-offset:3px}
+.origin-access-icon{font-size:1.1rem;font-weight:700;letter-spacing:.02em;line-height:1;user-select:none}
+.origin-access-panel{position:fixed;right:22px;bottom:84px;width:300px;padding:16px;background:#fff;border:1px solid #d4cfc8;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.22);font-size:.9rem;max-height:calc(100vh - 120px);overflow-y:auto;z-index:9998}
+.origin-access-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #e8e4de;color:#173f35;font-weight:600;font-size:.95rem}
+.origin-access-close{background:none!important;border:none!important;padding:0 4px!important;margin:0!important;width:auto!important;min-height:unset!important;color:#173f35!important;font-size:22px!important;line-height:1;cursor:pointer}
+.origin-access-close:hover{color:#b68a36!important}
+.origin-access-group-label{display:block;font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:#7a6f65;margin:12px 0 5px;font-weight:600}
+.origin-access-btn-row{display:flex;gap:6px;align-items:center;margin:3px 0}
+.origin-access-btn-row button{flex:1}
+.origin-font-scale-val{font-size:.8rem;color:#173f35;font-weight:600;min-width:38px;text-align:center}
+.origin-access-panel button:not(.origin-access-close):not(.origin-access-toggle){width:100%;min-height:40px;margin:3px 0;border:1.5px solid #d4cfc8;border-radius:8px;background:#f0ede8;color:#173f35;cursor:pointer;font-size:.85rem;font-weight:500;font-family:inherit;transition:background .15s,border-color .15s,color .15s}
+.origin-access-panel button:not(.origin-access-close):not(.origin-access-toggle):hover,.origin-access-panel button:not(.origin-access-close):not(.origin-access-toggle):focus-visible{background:#173f35;color:#fff;border-color:#173f35;outline:2px solid #b68a36;outline-offset:2px}
+.origin-access-panel button.is-active{background:#173f35!important;color:#fff!important;border-color:#173f35!important}
+.origin-access-panel select{width:100%;min-height:40px;margin:3px 0;border:1.5px solid #d4cfc8;border-radius:8px;background:#f0ede8;color:#173f35;font-size:.85rem;font-family:inherit;padding:0 10px;cursor:pointer}
+.origin-access-panel select:focus-visible{outline:2px solid #b68a36;outline-offset:2px;border-color:#173f35}
+.origin-access-note{display:block;margin-top:12px;padding-top:10px;border-top:1px solid #e8e4de;font-size:.7rem;color:#7a6f65;line-height:1.5}
+html.origin-high-contrast body{background:#000!important;color:#fff!important}
+html.origin-high-contrast :is(header,.site-header,nav,main,section,article,footer,.card,.fact-panel,.publication,.bento,.workflow article){background:#000!important;color:#fff!important;border-color:#555!important}
+html.origin-high-contrast a{color:#ffff00!important;text-decoration:underline!important}
+html.origin-high-contrast .button,html.origin-high-contrast .nav-cta{background:#fff!important;color:#000!important;border:2px solid #ffff00!important}
+html.origin-high-contrast .hero-bg{filter:contrast(1.4) brightness(0.5)}
+html.origin-dyslexia,html.origin-dyslexia *{font-family:'OpenDyslexic',Comic Sans MS,Arial,sans-serif!important;letter-spacing:.05em!important;word-spacing:.15em!important;line-height:1.8!important}
+html.origin-reduce-motion *,html.origin-reduce-motion *::before,html.origin-reduce-motion *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+html.origin-highlight-links a{background:#ffff00!important;color:#000!important;padding:1px 3px!important;border-radius:2px!important;text-decoration:underline!important}
+html.origin-profile-protanopia{filter:url(#origin-protanopia)}
+html.origin-profile-deuteranopia{filter:url(#origin-deuteranopia)}
+html.origin-profile-tritanopia{filter:url(#origin-tritanopia)}
+html.origin-profile-protanomaly{filter:url(#origin-protanomaly)}
+html.origin-profile-deuteranomaly{filter:url(#origin-deuteranomaly)}
+html.origin-profile-tritanomaly{filter:url(#origin-tritanomaly)}
+html.origin-profile-achromatopsia{filter:url(#origin-achromatopsia)}
+html.origin-profile-achromatomaly{filter:url(#origin-achromatomaly)}
+@media(max-width:600px){.origin-access-widget{right:14px;bottom:14px}.origin-access-panel{width:min(300px,calc(100vw - 28px));right:14px;bottom:76px}}
