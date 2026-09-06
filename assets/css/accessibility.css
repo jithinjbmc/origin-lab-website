@@ -1,10 +1,8 @@
 /* ORiGIN Lab - Full Accessibility Widget CSS */
 :root { --access-font-scale: 1; }
 html { font-size: calc(100% * var(--access-font-scale)); }
-
-.origin-access-widget { position:fixed; right:22px; bottom:22px; z-index:9999; font-family:inherit; }
-
-.origin-access-toggle { width:54px; height:54px; border:0; border-radius:50%; background:#173f35; color:#fff; cursor:pointer; box-shadow:0 4px 20px rgba(0,0,0,.28); display:flex; align-items:center; justify-content:center; transition:background .2s,transform .15s; }
+right:0; bottom:62px;.origin-access-widget { position:fixed; right:22px; bottom:22px; z-index:9999; font-family:inherit; }
+right:0; bottom:70px; max-height:calc(100vh - 110px); overflow-y:auto;.origin-access-toggle { width:54px; height:54px; border:0; border-radius:50%; background:#173f35; color:#fff; cursor:pointer; box-shadow:0 4px 20px rgba(0,0,0,.28); display:flex; align-items:center; justify-content:center; transition:background .2s,transform .15s; }
 .origin-access-toggle:hover,.origin-access-toggle:focus-visible { background:#b68a36; transform:scale(1.06); outline:3px solid #b68a36; outline-offset:3px; }
 .origin-access-icon { font-size:1.1rem; font-weight:700; letter-spacing:.02em; line-height:1; user-select:none; }
 
