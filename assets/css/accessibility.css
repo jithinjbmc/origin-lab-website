@@ -1,0 +1,190 @@
+/* ================================================
+   ORiGIN Lab — Accessibility Widget
+      File: assets/css/accessibility.css
+         Palette: #173f35 (forest green) · #b68a36 (gold)
+            ================================================ */
+
+/* Font scale */
+:root { --access-font-scale: 1; }
+html  { font-size: calc(100% * var(--access-font-scale)); }
+
+.origin-access-widget {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 9999;
+    font-family: inherit;
+}
+
+.origin-access-toggle {
+    width: 54px;
+    height: 54px;
+    border: 0;
+    border-radius: 50%;
+    background: #173f35;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+}
+.origin-access-toggle:hover,
+.origin-access-toggle:focus-visible {
+    background: #b68a36;
+    transform: scale(1.06);
+    outline: 3px solid #b68a36;
+    outline-offset: 3px;
+}
+
+.origin-access-icon {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    font-family: inherit;
+    user-select: none;
+}
+
+.origin-access-panel {
+    position: absolute;
+    right: 0;
+    bottom: 62px;
+    width: 276px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #d4cfc8;
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0,0,0,.18);
+    font-size: 0.9rem;
+}
+
+.origin-access-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e4de;
+    color: #173f35;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.origin-access-close {
+    background: none !important;
+    border: none !important;
+    padding: 0 4px !important;
+    margin: 0 !important;
+    width: auto !important;
+    min-height: unset !important;
+    color: #173f35 !important;
+    font-size: 22px !important;
+    line-height: 1;
+    cursor: pointer;
+}
+.origin-access-close:hover { color: #b68a36 !important; }
+
+.origin-access-group-label {
+    display: block;
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7a6f65;
+    margin: 12px 0 5px;
+    font-weight: 500;
+}
+
+.origin-access-btn-row {
+    display: flex;
+    gap: 8px;
+}
+.origin-access-btn-row button { flex: 1; }
+
+.origin-access-panel button:not(.origin-access-close):not(.origin-access-toggle) {
+    width: 100%;
+    min-height: 42px;
+    margin: 3px 0;
+    border: 1.5px solid #d4cfc8;
+    border-radius: 8px;
+    background: #f0ede8;
+    color: #173f35;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 500;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.origin-access-panel button:not(.origin-access-close):not(.origin-access-toggle):hover,
+.origin-access-panel button:not(.origin-access-close):not(.origin-access-toggle):focus-visible {
+    background: #173f35;
+    color: #fff;
+    border-color: #173f35;
+    outline: 2px solid #b68a36;
+    outline-offset: 2px;
+}
+.origin-access-panel button.is-active {
+    background: #173f35 !important;
+    color: #fff !important;
+    border-color: #173f35 !important;
+}
+
+.origin-access-panel select {
+    width: 100%;
+    min-height: 42px;
+    margin: 3px 0;
+    border: 1.5px solid #d4cfc8;
+    border-radius: 8px;
+    background: #f0ede8;
+    color: #173f35;
+    font-size: 0.88rem;
+    font-family: inherit;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.origin-access-panel select:focus-visible {
+    outline: 2px solid #b68a36;
+    outline-offset: 2px;
+    border-color: #173f35;
+}
+
+.origin-access-note {
+    display: block;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #e8e4de;
+    font-size: 0.72rem;
+    color: #7a6f65;
+    line-height: 1.5;
+}
+
+html.origin-high-contrast body {
+    background: #000 !important;
+    color: #fff !important;
+}
+html.origin-high-contrast :is(header, .site-header, nav, main, section, article, footer, .site-footer, .card, .fact-panel, .publication, .bento, .workflow article) {
+    background: #000 !important;
+    color: #fff !important;
+    border-color: #555 !important;
+}
+html.origin-high-contrast a { color: #ffff00 !important; text-decoration: underline !important; }
+html.origin-high-contrast .button, html.origin-high-contrast .nav-cta {
+    background: #fff !important;
+    color: #000 !important;
+    border: 2px solid #ffff00 !important;
+}
+html.origin-high-contrast .hero-bg { filter: contrast(1.4) brightness(0.5); }
+html.origin-high-contrast .card-icon, html.origin-high-contrast .number {
+    background: #333 !important;
+    color: #ffff00 !important;
+}
+
+html.origin-profile-deuteranopia { filter: url('#origin-deuteranopia'); }
+html.origin-profile-tritanopia   { filter: url('#origin-tritanopia'); }
+html.origin-profile-grayscale body { filter: grayscale(1); }
+
+@media (max-width: 600px) {
+    .origin-access-widget { right: 14px; bottom: 80px; }
+    .origin-access-panel { width: min(276px, calc(100vw - 28px)); right: 0; }
+}
