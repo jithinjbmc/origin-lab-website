@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ORiGIN Lab — Visitor Analytics</title>
+<meta name="robots" content="noindex,nofollow"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0d1b16;color:#e8f0ec;min-height:100vh}
+.topbar{background:#123d32;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1e5a45}
+.topbar h1{font-size:1.1rem;font-weight:700;color:#e1bd72;letter-spacing:.04em}
+.topbar a{color:#9fc4b1;font-size:.85rem;text-decoration:none}
+.login-wrap{display:flex;align-items:center;justify-content:center;min-height:80vh}
+.login-box{background:#123d32;border:1px solid #1e5a45;border-radius:16px;padding:40px;max-width:380px;width:100%;text-align:center}
+.login-box h2{color:#e1bd72;margin-bottom:8px}
+.login-box p{color:#9fc4b1;font-size:.9rem;margin-bottom:24px}
+.login-box input{width:100%;padding:12px 16px;border-radius:10px;border:1px solid #1e5a45;background:#0d1b16;color:#e8f0ec;font-size:.95rem;margin-bottom:14px}
+.btn{background:#c49345;color:#0d1b16;border:none;padding:12px 24px;border-radius:10px;font-weight:700;cursor:pointer;font-size:.95rem;width:100%}
+.btn:hover{background:#e1bd72}
+.err{color:#f87171;font-size:.85rem;margin-top:8px}
+.dashboard{display:none;padding:24px 28px}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:28px}
+.stat-card{background:#123d32;border:1px solid #1e5a45;border-radius:14px;padding:20px 24px}
+.stat-card .label{font-size:.78rem;color:#9fc4b1;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.stat-card .value{font-size:2rem;font-weight:700;color:#e1bd72}
+.section{background:#123d32;border:1px solid #1e5a45;border-radius:14px;padding:22px;margin-bottom:22px}
+.section h3{font-size:.9rem;font-weight:700;color:#e1bd72;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{text-align:left;padding:8px 10px;color:#9fc4b1;border-bottom:1px solid #1e5a45;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #0d1b16;color:#cce0d6}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#0d1b1680}
+.flag{font-size:1.1rem;margin-right:6px}
+.bar-wrap{margin-top:6px}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:.82rem}
+.bar-label{width:120px;color:#cce0d6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{height:18px;background:#c49345;border-radius:4px;min-width:4px}
+.bar-val{color:#9fc4b1;font-size:.78rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+.loading{text-align:center;padding:60px;color:#9fc4b1}
+.refresh{background:transparent;border:1px solid #1e5a45;color:#9fc4b1;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:.82rem;margin-left:12px}
+.refresh:hover{border-color:#c49345;color:#e1bd72}
+.country-flag{display:inline-block;width:20px;text-align:center}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1>ORiGIN Lab — Visitor Analytics</h1>
+  <a href="/admin/">← Back to CMS</a>
+</div>
+
+<div class="login-wrap" id="loginWrap">
+  <div class="login-box">
+    <h2>Analytics Access</h2>
+    <p>Enter your analytics secret key to view visitor data.</p>
+    <input type="password" id="secretInput" placeholder="Analytics secret key" onkeydown="if(event.key==='Enter')login()"/>
+    <button class="btn" onclick="login()">View Analytics</button>
+    <div class="err" id="loginErr"></div>
+  </div>
+</div>
+
+<div class="dashboard" id="dashboard">
+  <div class="stats-row" id="statsRow"></div>
+  <div id="mainContent"><div class="loading">Loading data...</div></div>
+</div>
+
+<script>
+const BACKEND='https://origin-lab-backend.onrender.com';
+let SECRET='';
+
+function login(){
+  const v=document.getElementById('secretInput').value.trim();
+  if(!v){document.getElementById('loginErr').textContent='Please enter the secret key.';return;}
+  SECRET=v;
+  loadData();
+}
+
+async function loadData(){
+  document.getElementById('loginErr').textContent='';
+  try{
+    const r=await fetch(BACKEND+'/api/track/data',{headers:{'x-analytics-secret':SECRET}});
+    if(r.status===401){document.getElementById('loginErr').textContent='Invalid secret key.';SECRET='';return;}
+    if(!r.ok)throw new Error('Server error '+r.status);
+    const d=await r.json();
+    document.getElementById('loginWrap').style.display='none';
+    document.getElementById('dashboard').style.display='block';
+    renderDashboard(d);
+    sessionStorage.setItem('analytics_secret',SECRET);
+  }catch(e){document.getElementById('loginErr').textContent='Error: '+e.message;}
+}
+
+function flag(code){
+  if(!code)return '';
+  const f=code.toUpperCase().split('').map(c=>String.fromCodePoint(c.charCodeAt(0)+127397)).join('');
+  return '<span class="country-flag">'+f+'</span>';
+}
+
+function renderDashboard(d){
+  const human=d.rows.filter(r=>!r.is_bot).length;
+  const bots=d.rows.filter(r=>r.is_bot).length;
+  const countries=new Set(d.rows.filter(r=>!r.is_bot&&r.country).map(r=>r.country)).size;
+  document.getElementById('statsRow').innerHTML=
+    stat('Total Visits',d.total)+
+    stat('Human Visits',human)+
+    stat('Bots Filtered',bots)+
+    stat('Countries',countries);
+
+  const mc=document.getElementById('mainContent');
+  mc.innerHTML=
+    section('Recent Visitors',recentTable(d.rows.slice(0,50)))+
+    '<div class="grid2">'+
+      section('Top Countries',countryBars(d.summary))+
+      section('Top Pages',pageBars(d.pages))+
+    '</div>'+
+    '<div class="grid2">'+
+      section('Devices',simpleBars(d.devices,'device','n'))+
+      section('Browsers',simpleBars(d.browsers,'browser','n'))+
+    '</div>'+
+    section('Daily Visits (last 30 days)',dailyTable(d.daily));
+}
+
+function stat(label,value){
+  return '<div class="stat-card"><div class="label">'+label+'</div><div class="value">'+value+'</div></div>';
+}
+function section(title,content){
+  return '<div class="section"><h3>'+title+'</h3>'+content+'</div>';
+}
+function recentTable(rows){
+  if(!rows.length)return '<p style="color:#9fc4b1;font-size:.85rem">No visits yet.</p>';
+  return '<div style="overflow-x:auto"><table><thead><tr><th>Time (UTC)</th><th>Page</th><th>Country</th><th>City</th><th>IP</th><th>Device</th><th>Browser</th><th>OS</th><th>Bot</th><th>ISP / Referrer</th></tr></thead><tbody>'+
+    rows.map(r=>'<tr><td>'+r.ts.replace('T',' ').substring(0,19)+'</td><td>'+esc(r.page||'/')+'</td><td>'+flag(r.country_code)+esc(r.country||'—')+'</td><td>'+esc(r.city||'—')+'</td><td>'+esc(r.ip||'—')+'</td><td>'+esc(r.device||'—')+'</td><td>'+esc(r.browser||'—')+'</td><td>'+esc(r.os||'—')+'</td><td>'+(r.is_bot?'🤖':'👤')+'</td><td>'+esc((r.isp||r.referrer||'—').substring(0,40))+'</td></tr>').join('')+
+  '</tbody></table></div>';
+}
+function countryBars(rows){
+  if(!rows.length)return '<p style="color:#9fc4b1;font-size:.85rem">No data yet.</p>';
+  const max=rows[0].visits;
+  return '<div class="bar-wrap">'+rows.map(r=>'<div class="bar-row"><div class="bar-label">'+flag(r.country_code)+esc(r.country)+'</div><div class="bar" style="width:'+Math.max(4,Math.round(r.visits/max*200))+'px"></div><span class="bar-val">'+r.visits+'</span></div>').join('')+'</div>';
+}
+function pageBars(rows){
+  if(!rows.length)return '<p style="color:#9fc4b1;font-size:.85rem">No data yet.</p>';
+  const max=rows[0].hits;
+  return '<div class="bar-wrap">'+rows.map(r=>'<div class="bar-row"><div class="bar-label" title="'+esc(r.page)+'">'+esc((r.page||'/').substring(0,22))+'</div><div class="bar" style="width:'+Math.max(4,Math.round(r.hits/max*200))+'px"></div><span class="bar-val">'+r.hits+'</span></div>').join('')+'</div>';
+}
+function simpleBars(rows,labelKey,valKey){
+  if(!rows.length)return '<p style="color:#9fc4b1;font-size:.85rem">No data yet.</p>';
+  const max=rows[0][valKey];
+  return '<div class="bar-wrap">'+rows.map(r=>'<div class="bar-row"><div class="bar-label">'+esc(r[labelKey])+'</div><div class="bar" style="width:'+Math.max(4,Math.round(r[valKey]/max*200))+'px"></div><span class="bar-val">'+r[valKey]+'</span></div>').join('')+'</div>';
+}
+function dailyTable(rows){
+  if(!rows.length)return '<p style="color:#9fc4b1;font-size:.85rem">No data yet.</p>';
+  return '<div style="overflow-x:auto"><table><thead><tr><th>Date</th><th>Visits</th></tr></thead><tbody>'+rows.map(r=>'<tr><td>'+esc(r.date)+'</td><td>'+r.visits+'</td></tr>').join('')+'</tbody></table></div>';
+}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+// Auto-restore session
+const saved=sessionStorage.getItem('analytics_secret');
+if(saved){SECRET=saved;loadData();}
+</script>
+</body>
+</html>
